@@ -1,12 +1,4 @@
-:root {
-    --bg-main: #0b0e11;
-    --bg-card: #181a20;
-    --text-primary: #eaecef;
-    --text-secondary: #848e9c;
-    --accent-green: #0ecb81;
-    --border-color: #2b3139;
-    --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
 
 * {
     margin: 0;
@@ -15,241 +7,272 @@
 }
 
 body {
-    font-family: var(--font-stack);
-    background-color: #1f2226;
-    color: var(--text-primary);
+    background-color: #0c1017;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Roboto", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px;
-    min-height: 100vh;
+    padding: 20px;
+    color: #ffffff;
 }
 
-/* UI Container mimicking a modern mobile client interface */
-.app-container {
-    width: 100%;
-    max-width: 412px;
-    background-color: var(--bg-main);
-    border-radius: 24px;
+/* Premium iPhone Display Box Setup */
+#box {
+    width: 412px;
+    background-color: #181e25;
+    border-radius: 40px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--border-color);
+    position: relative;
+    padding-bottom: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 4px solid #2d3846;
 }
 
-/* Header & Metadata Structuring */
+/* iOS Upper Status Bar Layout */
 .status-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 24px 8px;
+    padding: 14px 24px 10px 24px;
     font-size: 14px;
     font-weight: 600;
 }
 
-.status-icons {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.status-left #display-time {
+    color: #ffffff;
 }
 
-.battery-container {
+.status-right {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
 }
 
-.battery-icon-shell {
-    width: 24px;
+.ios-signal, .ios-wifi {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.ios-battery-container {
+    display: flex;
+    align-items: center;
+}
+
+.ios-battery-body {
+    width: 25px;
     height: 12px;
-    border: 1.5px solid var(--text-primary);
+    border: 1px solid #ffffff;
     border-radius: 3px;
     padding: 1px;
     display: flex;
 }
 
-.battery-icon-level {
+.ios-battery-fill {
     height: 100%;
-    background-color: var(--text-primary);
+    background-color: #2de19c;
     border-radius: 1px;
+    width: 55%;
 }
 
-.nav-bar {
+.ios-battery-tip {
+    width: 1.5px;
+    height: 4px;
+    background-color: #ffffff;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+}
+
+/* Header Navbar Style */
+.app-header {
     display: flex;
     align-items: center;
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border-color);
+    padding: 15px 20px;
+    position: relative;
 }
 
-.back-btn {
-    background: none;
-    border: none;
-    color: var(--text-primary);
+.back-arrow {
+    font-size: 20px;
+    color: #848e9c;
     cursor: pointer;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    left: 20px;
 }
 
-.nav-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin-left: 8px;
-}
-
-/* Core Dashboard Content Elements */
-.transaction-details {
-    padding: 32px 24px;
-}
-
-.summary-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.page-title {
+    width: 100%;
     text-align: center;
-    margin-bottom: 36px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #eaedd0;
 }
 
-.label-heading {
-    color: var(--text-secondary);
+/* Amount & Center Badge */
+.payment-summary {
+    text-align: center;
+    padding: 30px 10px 20px 10px;
+}
+
+.amount-label {
     font-size: 14px;
-    margin-bottom: 8px;
+    color: #848e9c;
 }
 
-.amount-display {
-    font-size: 32px;
+.main-amount {
+    font-size: 34px;
     font-weight: 700;
-    margin-bottom: 12px;
-    letter-spacing: -0.5px;
+    color: #ffffff;
+    margin: 8px 0;
 }
 
 .status-badge {
     display: inline-flex;
     align-items: center;
     gap: 4px;
+    color: #2de19c;
     font-size: 14px;
     font-weight: 600;
-    color: var(--accent-green);
 }
 
-/* Rows Layout Replacement for Absolute Positions */
-.meta-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.check-icon {
+    font-size: 12px;
 }
 
-.meta-item {
+/* List Items Rows Container */
+.details-container {
+    padding: 10px 20px;
+}
+
+.detail-item {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #242d38;
+}
+
+.item-label {
     font-size: 14px;
-    line-height: 1.4;
+    color: #848e9c;
 }
 
-.meta-label {
-    color: var(--text-secondary);
-    min-width: 100px;
-}
-
-.meta-value {
-    color: var(--text-primary);
+.item-value {
+    font-size: 14px;
+    color: #eaecef;
     text-align: right;
 }
 
-.meta-value-group {
+.bold {
+    font-weight: 600;
+}
+
+.text-muted {
+    color: #5e6673;
+}
+
+.item-value-group {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     text-align: right;
+    margin-left: auto;
+    margin-right: 8px;
 }
 
-.meta-value-group.row-layout {
-    flex-direction: row;
+.primary-value {
+    font-size: 14px;
+    color: #eaecef;
+}
+
+.secondary-value {
+    font-size: 12px;
+    color: #848e9c;
+    margin-top: 2px;
+}
+
+.chevron-arrow {
+    color: #5e6673;
+    font-size: 12px;
+}
+
+.order-id-wrapper {
+    display: flex;
     align-items: center;
     gap: 6px;
 }
 
-.secondary-text {
-    color: var(--text-secondary);
-    font-size: 12px;
-    margin-top: 2px;
-}
-
-.font-bold {
-    font-weight: 600;
-}
-
-.text-tabular {
-    font-variant-numeric: tabular-nums;
-}
-
-.action-arrow {
-    color: var(--text-secondary);
-    margin-left: 8px;
-    align-self: center;
-}
-
-.icon-btn-copy {
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    cursor: pointer;
-    display: inline-flex;
-    padding: 2px;
-}
-
-.icon-btn-copy:hover {
-    color: var(--text-primary);
-}
-
-/* Separate Component: Settings Controller Panel Outside Capture Scope */
-.control-panel {
-    margin-top: 30px;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 20px;
-    width: 100%;
-    max-width: 412px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.control-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.control-panel label {
+.copy-button-icon {
     font-size: 14px;
-    color: var(--text-secondary);
+    color: #848e9c;
+    transform: rotate(90deg);
 }
 
-.control-panel input {
-    background: var(--bg-main);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-    padding: 6px 12px;
-    border-radius: 6px;
-    width: 70px;
-    text-align: center;
+/* Modern Control Panel Setup */
+.control-panel {
+    width: 412px;
+    background: #1f2630;
+    border-radius: 24px;
+    padding: 24px;
+    margin-top: 25px;
+    border: 1px solid #2d3846;
 }
 
-.action-download-btn {
-    background-color: var(--accent-green);
-    color: #000;
+.control-panel h2 {
+    font-size: 18px;
+    margin-bottom: 18px;
+    color: #2de19c;
+    border-bottom: 1px dashed #2d3846;
+    padding-bottom: 8px;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.control-group label {
+    font-size: 13px;
+    color: #848e9c;
+}
+
+.control-group input {
+    width: 60%;
+    background: #12161c;
+    border: 1px solid #2d3846;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: #fff;
+    outline: none;
+    font-size: 13px;
+}
+
+.control-group input:focus {
+    border-color: #2de19c;
+}
+
+.download-btn {
+    width: 100%;
+    background: #2de19c;
     border: none;
     padding: 12px;
-    border-radius: 10px;
+    color: #0c1017;
+    font-weight: 700;
     font-size: 15px;
-    font-weight: 600;
+    border-radius: 12px;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+    transition: transform 0.2s;
 }
 
-.action-download-btn:hover {
-    opacity: 0.9;
+.download-btn:active {
+    transform: scale(0.98);
+}
+
+.download-btn img {
+    width: 18px;
+    height: 18px;
 }
