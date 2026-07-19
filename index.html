@@ -1,1 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Payment Details</title>
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <div id="box">
+        <!-- Top Status Bar Elements -->
+        <div class="time">3:29 AM</div>
+        <div class="volte">LTE</div>
+        <div class="signals"></div>
+        <div class="battery_percentage">55</div>
+        <div class="battery1"></div>
+        <div class="battery2"></div>
 
+        <!-- Header Navigation -->
+        <div class="back_arrow"></div>
+        <div class="page_title">Payment Details</div>
+
+        <!-- Main Payment Status -->
+        <div class="amount_label">Amount</div>
+        <div class="amount">-10 USDT</div>
+        <div class="status_completed">Completed</div>
+
+        <!-- Detailed List -->
+        <div class="detail_row">
+            <span class="label">To</span>
+            <div class="value_group">
+                <span class="main_value bold_id">37639398</span>
+                <span class="sub_value">Raza00</span>
+            </div>
+            <span class="arrow_icon">&gt;</span>
+        </div>
+
+        <div class="detail_row">
+            <span class="label">Note</span>
+            <span class="value">--</span>
+        </div>
+
+        <div class="detail_row">
+            <span class="label">Time</span>
+            <span class="value datetime">2025-08-28 15:58:13</span>
+        </div>
+
+        <div class="detail_row">
+            <span class="label">Order ID</span>
+            <span class="value order_id">383415796060930048</span>
+            <span class="copy_icon"></span>
+        </div>
+
+        <div class="detail_row">
+            <span class="label">Payment Method</span>
+            <span class="value">Funding Account</span>
+        </div>
+
+        <div class="detail_row">
+            <span class="label">Paid With</span>
+            <span class="value bold_paid">10 USDT</span>
+        </div>
+
+        <img src="https://talha-bhai-payment-details.vercel.app/img.png" style="display:none;">
+    </div>
+    
+    <div style="margin-top: 20px; text-align: center;">
+        <label style="color:white; font-family: sans-serif;">Battery (%):</label>
+        <input type="number" value="55" min="0" max="100">
+        <button class="btn" title="Download">
+            <img src="https://raw.githubusercontent.com/ahmad-bhai/zeetex-currency-rate/0f914c89358480c47e3fdbb8a74f7020d938cf36/download.svg" alt="Download">
+        </button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+        integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="script.js"></script>
+</body>
+</html>
