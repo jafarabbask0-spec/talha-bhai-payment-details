@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Roboto:wght@400;700&display=swap');
 
 * {
     margin: 0;
@@ -7,190 +7,216 @@
 }
 
 body {
-    background-color: #0c1017;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Roboto", sans-serif;
+    background-color: #0e121a;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    color: #ffffff;
+    min-height: 100vh;
 }
 
-/* Premium iPhone Display Box Setup */
+/* iPhone Canvas Viewport wrapper */
+#iphone-container {
+    background: #12161f;
+    padding: 10px;
+    border-radius: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    margin-bottom: 25px;
+}
+
 #box {
     width: 412px;
-    background-color: #181e25;
-    border-radius: 40px;
-    overflow: hidden;
+    height: 892px; /* Standard iPhone aspect scale */
+    background-color: #ffffff;
+    border-radius: 32px;
     position: relative;
-    padding-bottom: 40px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    border: 4px solid #2d3846;
+    overflow: hidden;
+    color: #000000;
+    display: flex;
+    flex-direction: column;
 }
 
-/* iOS Upper Status Bar Layout */
-.status-bar {
+/* iOS Status Bar Design */
+.ios-status-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 24px 10px 24px;
-    font-size: 14px;
+    padding: 14px 24px 4px 24px;
+    font-size: 15px;
     font-weight: 600;
+    letter-spacing: -0.2px;
+    background: #ffffff;
+    z-index: 10;
 }
 
-.status-left #display-time {
-    color: #ffffff;
+.ios-time {
+    width: 60px;
+    text-align: left;
+    color: #000;
 }
 
-.status-right {
+.ios-notch {
+    width: 110px;
+    height: 30px;
+    background: #000000;
+    border-radius: 20px;
+    margin-top: -6px;
+}
+
+.ios-icons {
     display: flex;
     align-items: center;
     gap: 6px;
+    color: #000;
 }
 
-.ios-signal, .ios-wifi {
-    font-size: 12px;
-    opacity: 0.9;
-}
-
-.ios-battery-container {
+.ios-battery-wrapper {
     display: flex;
     align-items: center;
+    gap: 4px;
+    font-size: 12px;
 }
 
-.ios-battery-body {
+.ios-battery-icon {
     width: 25px;
     height: 12px;
-    border: 1px solid #ffffff;
+    border: 1px solid #000;
     border-radius: 3px;
     padding: 1px;
-    display: flex;
+    position: relative;
+}
+
+.ios-battery-icon::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 3px;
+    width: 2px;
+    height: 4px;
+    background: #000;
+    border-radius: 0 1px 1px 0;
 }
 
 .ios-battery-fill {
     height: 100%;
-    background-color: #2de19c;
+    background: #000;
     border-radius: 1px;
-    width: 55%;
 }
 
-.ios-battery-tip {
-    width: 1.5px;
-    height: 4px;
-    background-color: #ffffff;
-    border-top-right-radius: 1px;
-    border-bottom-right-radius: 1px;
-}
-
-/* Header Navbar Style */
-.app-header {
+/* iOS Navigation Header */
+.ios-header {
     display: flex;
     align-items: center;
-    padding: 15px 20px;
-    position: relative;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: #ffffff;
 }
 
-.back-arrow {
-    font-size: 20px;
-    color: #848e9c;
+.back_arrow {
+    width: 12px;
+    height: 12px;
+    border-left: 2px solid #007aff;
+    border-bottom: 2px solid #007aff;
+    transform: rotate(45deg);
     cursor: pointer;
-    position: absolute;
-    left: 20px;
 }
 
-.page-title {
-    width: 100%;
+.page_title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.header_right {
+    width: 12px;
+}
+
+/* Main Transaction Status Body */
+.payment-main-section {
     text-align: center;
-    font-size: 18px;
-    font-weight: 500;
-    color: #eaedd0;
+    padding: 35px 20px 25px 20px;
+    background: #ffffff;
+    border-bottom: 8px solid #f2f2f7;
 }
 
-/* Amount & Center Badge */
-.payment-summary {
-    text-align: center;
-    padding: 30px 10px 20px 10px;
-}
-
-.amount-label {
+.amount_label {
     font-size: 14px;
-    color: #848e9c;
+    color: #8e8e93;
+    margin-bottom: 6px;
 }
 
-.main-amount {
+.amount {
     font-size: 34px;
     font-weight: 700;
-    color: #ffffff;
-    margin: 8px 0;
+    color: #000000;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
 }
 
-.status-badge {
+.status_completed {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    color: #2de19c;
-    font-size: 14px;
+    color: #34c759;
     font-weight: 600;
+    font-size: 15px;
 }
 
 .check-icon {
-    font-size: 12px;
+    font-weight: bold;
 }
 
-/* List Items Rows Container */
+/* Detailed List Rows styling */
 .details-container {
-    padding: 10px 20px;
+    background: #ffffff;
+    flex: 1;
+    padding: 10px 0;
 }
 
-.detail-item {
+.detail_row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 0;
-    border-bottom: 1px solid #242d38;
+    padding: 14px 20px;
+    border-bottom: 1px solid #e5e5ea;
+    font-size: 15px;
 }
 
-.item-label {
-    font-size: 14px;
-    color: #848e9c;
+.detail_row:last-child {
+    border-bottom: none;
 }
 
-.item-value {
-    font-size: 14px;
-    color: #eaecef;
+.label {
+    color: #8e8e93;
+}
+
+.value {
+    color: #000000;
     text-align: right;
 }
 
-.bold {
+.value_group {
+    text-align: right;
+}
+
+.bold_id {
+    display: block;
     font-weight: 600;
+    color: #000000;
 }
 
-.text-muted {
-    color: #5e6673;
-}
-
-.item-value-group {
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-    margin-left: auto;
-    margin-right: 8px;
-}
-
-.primary-value {
-    font-size: 14px;
-    color: #eaecef;
-}
-
-.secondary-value {
-    font-size: 12px;
-    color: #848e9c;
+.sub_value {
+    display: block;
+    font-size: 13px;
+    color: #8e8e93;
     margin-top: 2px;
 }
 
-.chevron-arrow {
-    color: #5e6673;
-    font-size: 12px;
+.arrow_icon {
+    color: #c7c7cc;
+    font-size: 16px;
+    margin-left: 8px;
 }
 
 .order-id-wrapper {
@@ -199,80 +225,101 @@ body {
     gap: 6px;
 }
 
-.copy-button-icon {
+.copy_icon {
     font-size: 14px;
-    color: #848e9c;
-    transform: rotate(90deg);
+    cursor: pointer;
+    opacity: 0.6;
 }
 
-/* Modern Control Panel Setup */
+.bold_paid {
+    font-weight: 600;
+}
+
+/* Complete Modern Control Panel */
 .control-panel {
-    width: 412px;
-    background: #1f2630;
-    border-radius: 24px;
+    background: #1a2230;
+    width: 100%;
+    max-width: 432px;
     padding: 24px;
-    margin-top: 25px;
-    border: 1px solid #2d3846;
+    border-radius: 24px;
+    border: 1px solid #2d3748;
+    color: #fff;
 }
 
-.control-panel h2 {
+.control-panel h3 {
+    margin-bottom: 16px;
     font-size: 18px;
-    margin-bottom: 18px;
+    text-align: center;
     color: #2de19c;
-    border-bottom: 1px dashed #2d3846;
-    padding-bottom: 8px;
 }
 
-.control-group {
+.control-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.input-group {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 12px;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.control-group label {
-    font-size: 13px;
-    color: #848e9c;
+.input-group.full-width {
+    grid-column: span 2;
 }
 
-.control-group input {
-    width: 60%;
-    background: #12161c;
-    border: 1px solid #2d3846;
-    padding: 8px 12px;
+.input-group label {
+    font-size: 12px;
+    color: #a0aec0;
+    font-weight: 500;
+}
+
+.control-panel input {
+    width: 100%;
+    padding: 10px 12px;
+    background: #0f172a;
+    border: 1px solid #334155;
     border-radius: 8px;
     color: #fff;
+    font-size: 14px;
     outline: none;
-    font-size: 13px;
+    transition: border 0.2s;
 }
 
-.control-group input:focus {
+.control-panel input:focus {
     border-color: #2de19c;
 }
 
-.download-btn {
+/* Premium Download Button Layout */
+.btn-download {
     width: 100%;
+    padding: 14px;
     background: #2de19c;
     border: none;
-    padding: 12px;
-    color: #0c1017;
-    font-weight: 700;
-    font-size: 15px;
     border-radius: 12px;
-    cursor: pointer;
+    color: #0f172a;
+    font-size: 15px;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    margin-top: 15px;
-    transition: transform 0.2s;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
 }
 
-.download-btn:active {
-    transform: scale(0.98);
+.btn-download:hover {
+    background: #26c487;
+    transform: translateY(-2px);
 }
 
-.download-btn img {
+.btn-download:active {
+    transform: translateY(0);
+}
+
+.btn-download img {
     width: 18px;
     height: 18px;
 }
