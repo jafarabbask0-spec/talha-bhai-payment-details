@@ -9,132 +9,139 @@
 </head>
 <body>
 
-    <!-- Main Mobile Display Container (iPhone Style) -->
-    <div id="box">
-        <!-- iOS Status Bar -->
-        <div class="status-bar">
-            <div class="status-left">
-                <span id="display-time">03:29</span>
-            </div>
-            <div class="status-right">
-                <span class="ios-signal">📶</span>
-                <span class="ios-wifi">📶</span>
-                <div class="ios-battery-container">
-                    <div class="ios-battery-body">
-                        <div id="display-battery-fill" class="ios-battery-fill"></div>
+    <!-- iPhone Canvas Container -->
+    <div id="iphone-container">
+        <div id="box">
+            <!-- iOS Status Bar -->
+            <div class="ios-status-bar">
+                <div class="ios-time" id="display-time">03:29</div>
+                <div class="ios-notch"></div>
+                <div class="ios-icons">
+                    <span class="ios-signal">📶</span>
+                    <span class="ios-wifi">📶</span>
+                    <div class="ios-battery-wrapper">
+                        <span id="display-battery-text">55</span>%
+                        <div class="ios-battery-icon">
+                            <div class="ios-battery-fill" id="display-battery-fill" style="width: 55%;"></div>
+                        </div>
                     </div>
-                    <div class="ios-battery-tip"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Header Navigation -->
-        <div class="app-header">
-            <span class="back-arrow">&#10094;</span>
-            <h1 class="page-title">Payment Details</h1>
-        </div>
-
-        <!-- Main Content Area -->
-        <div class="payment-summary">
-            <span class="amount-label">Amount</span>
-            <div id="display-amount" class="main-amount">-10 USDT</div>
-            <div class="status-badge">
-                <span class="check-icon">&#10003;</span> Completed
-            </div>
-        </div>
-
-        <!-- Transaction Details List -->
-        <div class="details-container">
-            <div class="detail-item">
-                <span class="item-label">To</span>
-                <div class="item-value-group">
-                    <span id="display-trader-id" class="primary-value bold">37639398</span>
-                    <span id="display-username" class="secondary-value">Raza00</span>
-                </div>
-                <span class="chevron-arrow">&#10095;</span>
-            </div>
-
-            <div class="detail-item">
-                <span class="item-label">Note</span>
-                <span class="item-value text-muted">--</span>
-            </div>
-
-            <div class="detail-item">
-                <span class="item-label">Time</span>
-                <span id="display-datetime" class="item-value">2025-08-28 15:58:13</span>
-            </div>
-
-            <div class="detail-item">
-                <span class="item-label">Order ID</span>
-                <div class="order-id-wrapper">
-                    <span id="display-order-id" class="item-value">383415796060930048</span>
-                    <span class="copy-button-icon">&#9166;</span>
                 </div>
             </div>
 
-            <div class="detail-item">
-                <span class="item-label">Payment Method</span>
-                <span class="item-value">Funding Account</span>
+            <!-- Header Navigation -->
+            <div class="ios-header">
+                <div class="back_arrow"></div>
+                <div class="page_title">Payment Details</div>
+                <div class="header_right"></div>
             </div>
 
-            <div class="detail-item">
-                <span class="item-label">Paid With</span>
-                <span id="display-paid-with" class="item-value bold">10 USDT</span>
+            <!-- Main Payment Status -->
+            <div class="payment-main-section">
+                <div class="amount_label">Amount</div>
+                <div class="amount" id="display-amount">-10 USDT</div>
+                <div class="status_completed">
+                    <span class="check-icon">✓</span> Completed
+                </div>
             </div>
+
+            <!-- Detailed List Items -->
+            <div class="details-container">
+                <div class="detail_row">
+                    <span class="label">To</span>
+                    <div class="value_group">
+                        <span class="main_value bold_id" id="display-trader-id">37639398</span>
+                        <span class="sub_value" id="display-trader-name">Raza00</span>
+                    </div>
+                    <span class="arrow_icon">&gt;</span>
+                </div>
+
+                <div class="detail_row">
+                    <span class="label">Note</span>
+                    <span class="value" id="display-note">--</span>
+                </div>
+
+                <div class="detail_row">
+                    <span class="label">Time</span>
+                    <span class="value datetime" id="display-datetime">2025-08-28 15:58:13</span>
+                </div>
+
+                <div class="detail_row">
+                    <span class="label">Order ID</span>
+                    <div class="order-id-wrapper">
+                        <span class="value order_id" id="display-order-id">383415796060930048</span>
+                        <span class="copy_icon">📋</span>
+                    </div>
+                </div>
+
+                <div class="detail_row">
+                    <span class="label">Payment Method</span>
+                    <span class="value">Funding Account</span>
+                </div>
+
+                <div class="detail_row">
+                    <span class="label">Paid With</span>
+                    <span class="value bold_paid" id="display-paid-with">10 USDT</span>
+                </div>
+            </div>
+
+            <!-- Hidden image reference from original setup -->
+            <img src="https://talha-bhai-payment-details.vercel.app/img.png" style="display:none;">
         </div>
     </div>
     
-    <!-- Dynamic System Control Panel -->
+    <!-- Dynamic Full System Control Panel -->
     <div class="control-panel">
-        <h2>System Controller</h2>
+        <h3>🎛️ Live UI System Editor</h3>
         
-        <div class="control-group">
-            <label>Top Time:</label>
-            <input type="text" id="input-time" value="03:29">
+        <div class="control-grid">
+            <div class="input-group">
+                <label>Time:</label>
+                <input type="text" id="input-time" value="03:29">
+            </div>
+            <div class="input-group">
+                <label>Battery (%):</label>
+                <input type="number" id="input-battery" value="55" min="0" max="100">
+            </div>
+            <div class="input-group">
+                <label>Amount:</label>
+                <input type="text" id="input-amount" value="-10 USDT">
+            </div>
+            <div class="input-group">
+                <label>Paid With:</label>
+                <input type="text" id="input-paid-with" value="10 USDT">
+            </div>
+            <div class="input-group">
+                <label>Trader ID:</label>
+                <input type="text" id="input-trader-id" value="37639398">
+            </div>
+            <div class="input-group">
+                <label>Username Name:</label>
+                <input type="text" id="input-trader-name" value="Raza00">
+            </div>
+            <div class="input-group">
+                <label>Note:</label>
+                <input type="text" id="input-note" value="--">
+            </div>
+            <div class="input-group">
+                <label>Order ID:</label>
+                <input type="text" id="input-order-id" value="383415796060930048">
+            </div>
+            <div class="input-group full-width">
+                <label>Date & Time:</label>
+                <input type="text" id="input-datetime" value="2025-08-28 15:58:13">
+            </div>
         </div>
 
-        <div class="control-group">
-            <label>Battery (%):</label>
-            <input type="number" id="input-battery" value="55" min="0" max="100">
-        </div>
-
-        <div class="control-group">
-            <label>Amount (USDT):</label>
-            <input type="text" id="input-amount" value="-10 USDT">
-        </div>
-
-        <div class="control-group">
-            <label>Trader ID:</label>
-            <input type="text" id="input-trader-id" value="37639398">
-        </div>
-
-        <div class="control-group">
-            <label>Username Name:</label>
-            <input type="text" id="input-username" value="Raza00">
-        </div>
-
-        <div class="control-group">
-            <label>Transaction Time:</label>
-            <input type="text" id="input-datetime" value="2025-08-28 15:58:13">
-        </div>
-
-        <div class="control-group">
-            <label>Order ID:</label>
-            <input type="text" id="input-order-id" value="383415796060930048">
-        </div>
-
-        <div class="control-group">
-            <label>Paid Quantity:</label>
-            <input type="text" id="input-paid-with" value="10 USDT">
-        </div>
-
-        <button class="download-btn">
+        <button class="btn-download" title="Download iPhone Screenshot">
             <img src="https://raw.githubusercontent.com/ahmad-bhai/zeetex-currency-rate/0f914c89358480c47e3fdbb8a74f7020d938cf36/download.svg" alt="Download">
-            Download Screenshot
+            <span>Download iPhone Screenshot</span>
         </button>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- html2canvas Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+        integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script.js"></script>
 </body>
 </html>
