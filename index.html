@@ -3,79 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Overview</title>
     <link rel="stylesheet" href="style.css">
-    <title>Payment Details</title>
-    <link rel="icon" href="logo.png" type="image/png">
 </head>
 <body>
-    <div id="box">
-        <!-- Top Status Bar Elements -->
-        <div class="time">3:29 AM</div>
-        <div class="volte">LTE</div>
-        <div class="signals"></div>
-        <div class="battery_percentage">55</div>
-        <div class="battery1"></div>
-        <div class="battery2"></div>
-
-        <!-- Header Navigation -->
-        <div class="back_arrow"></div>
-        <div class="page_title">Payment Details</div>
-
-        <!-- Main Payment Status -->
-        <div class="amount_label">Amount</div>
-        <div class="amount">-10 USDT</div>
-        <div class="status_completed">Completed</div>
-
-        <!-- Detailed List -->
-        <div class="detail_row">
-            <span class="label">To</span>
-            <div class="value_group">
-                <span class="main_value bold_id">37639398</span>
-                <span class="sub_value">Raza00</span>
+    <div class="app-container" id="capture-box">
+        <!-- Status Bar -->
+        <header class="status-bar">
+            <span class="status-time" id="current-time">03:29 AM</span>
+            <div class="status-icons">
+                <span class="network-type">LTE</span>
+                <div class="battery-container">
+                    <span class="battery-text" id="battery-level-text">55%</span>
+                    <div class="battery-icon-shell">
+                        <div class="battery-icon-level" id="battery-level-fill" style="width: 55%;"></div>
+                    </div>
+                </div>
             </div>
-            <span class="arrow_icon">&gt;</span>
-        </div>
+        </header>
 
-        <div class="detail_row">
-            <span class="label">Note</span>
-            <span class="value">--</span>
-        </div>
+        <!-- Navigation -->
+        <nav class="nav-bar">
+            <button class="back-btn" aria-label="Go back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <h1 class="nav-title">Details</h1>
+        </nav>
 
-        <div class="detail_row">
-            <span class="label">Time</span>
-            <span class="value datetime">2025-08-28 15:58:13</span>
-        </div>
+        <!-- Main Content -->
+        <main class="transaction-details">
+            <div class="summary-section">
+                <span class="label-heading">Total Value</span>
+                <div class="amount-display">-10.00 USDT</div>
+                <div class="status-badge status-success">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                    Completed
+                </div>
+            </div>
 
-        <div class="detail_row">
-            <span class="label">Order ID</span>
-            <span class="value order_id">383415796060930048</span>
-            <span class="copy_icon"></span>
-        </div>
+            <!-- Meta Data Grid -->
+            <div class="meta-list">
+                <div class="meta-item clickable">
+                    <span class="meta-label">Recipient</span>
+                    <div class="meta-value-group">
+                        <span class="primary-text font-bold">37639398</span>
+                        <span class="secondary-text">Raza00</span>
+                    </div>
+                    <span class="action-arrow">&gt;</span>
+                </div>
 
-        <div class="detail_row">
-            <span class="label">Payment Method</span>
-            <span class="value">Funding Account</span>
-        </div>
+                <div class="meta-item">
+                    <span class="meta-label">Memo</span>
+                    <span class="meta-value">--</span>
+                </div>
 
-        <div class="detail_row">
-            <span class="label">Paid With</span>
-            <span class="value bold_paid">10 USDT</span>
-        </div>
+                <div class="meta-item">
+                    <span class="meta-label">Timestamp</span>
+                    <span class="meta-value text-tabular" id="tx-timestamp">2025-08-28 15:58:13</span>
+                </div>
 
-        <img src="https://talha-bhai-payment-details.vercel.app/img.png" style="display:none;">
+                <div class="meta-item">
+                    <span class="meta-label">Reference ID</span>
+                    <div class="meta-value-group row-layout">
+                        <span class="primary-text text-tabular">383415796060930048</span>
+                        <button class="icon-btn-copy" aria-label="Copy Reference ID">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="meta-item">
+                    <span class="meta-label">Source</span>
+                    <span class="meta-value">Funding Balances</span>
+                </div>
+
+                <div class="meta-item">
+                    <span class="meta-label">Settled Assets</span>
+                    <span class="meta-value font-bold text-highlight">10.00 USDT</span>
+                </div>
+            </div>
+        </main>
     </div>
     
-    <div style="margin-top: 20px; text-align: center;">
-        <label style="color:white; font-family: sans-serif;">Battery (%):</label>
-        <input type="number" value="55" min="0" max="100">
-        <button class="btn" title="Download">
-            <img src="https://raw.githubusercontent.com/ahmad-bhai/zeetex-currency-rate/0f914c89358480c47e3fdbb8a74f7020d938cf36/download.svg" alt="Download">
+    <!-- Control Dashboard -->
+    <div class="control-panel">
+        <div class="control-row">
+            <label for="battery-input">Simulate Battery:</label>
+            <input type="number" id="battery-input" value="55" min="0" max="100">
+        </div>
+        <button class="action-download-btn" id="trigger-download" title="Export Image">
+            <span>Export View</span>
         </button>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
-        integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script.js"></script>
 </body>
 </html>
