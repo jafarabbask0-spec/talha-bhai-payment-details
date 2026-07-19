@@ -1,71 +1,63 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Local debugging authorization logic wrapper
-    (() => {
-        const targetDomain = "talha-bhai-pay.vercel.app";
-        const hostname = window.location.hostname;
-        
-        // Ensure standard local development servers don't trip verification
-        const isLocalDev = hostname === "localhost" || hostname === "127.0.0.1" || hostname.startsWith("192.168.");
-        
-        if (hostname !== targetDomain && !isLocalDev) {
-            console.warn("Domain validation redirection suspended for context maintenance.");
-        }
-    })();
+    // Inputs elements variables
+    const inputTime = document.getElementById("input-time");
+    const inputBattery = document.getElementById("input-battery");
+    const inputAmount = document.getElementById("input-amount");
+    const inputTraderId = document.getElementById("input-trader-id");
+    const inputUsername = document.getElementById("input-username");
+    const inputDatetime = document.getElementById("input-datetime");
+    const inputOrderId = document.getElementById("input-order-id");
+    const inputPaidWith = document.getElementById("input-paid-with");
 
-    // Dynamic Device Clock Driver
-    const clockElement = document.getElementById("current-time");
-    const syncDeviceClock = () => {
-        if (!clockElement) return;
-        const localDate = new Date();
-        let hours = localDate.getHours();
-        const minutes = String(localDate.getMinutes()).padStart(2, "0");
-        const meridian = hours >= 12 ? "PM" : "AM";
-        
-        hours = hours % 12;
-        hours = hours ? hours : 12; // Formats 0 to 12
-        
-        clockElement.textContent = `${String(hours).padStart(2, "0")}:${minutes} ${meridian}`;
-    };
-    syncDeviceClock();
-    setInterval(syncDeviceClock, 30000);
+    // Display elements variables
+    const displayTime = document.getElementById("display-time");
+    const displayBatteryFill = document.getElementById("display-battery-fill");
+    const displayAmount = document.getElementById("display-amount");
+    const displayTraderId = document.getElementById("display-trader-id");
+    const displayUsername = document.getElementById("display-username");
+    const displayDatetime = document.getElementById("display-datetime");
+    const displayOrderId = document.getElementById("display-order-id");
+    const displayPaidWith = document.getElementById("display-paid-with");
 
-    // Live Device Battery Simulator Engine
-    const batteryInput = document.getElementById("battery-input");
-    const batteryText = document.getElementById("battery-level-text");
-    const batteryFill = document.getElementById("battery-level-fill");
-
-    const updateBatterySimulation = () => {
-        if (!batteryInput || !batteryText || !batteryFill) return;
-        let value = Math.max(0, Math.min(100, parseInt(batteryInput.value) || 0));
-        batteryInput.value = value;
-        
-        batteryText.textContent = `${value}%`;
-        batteryFill.style.width = `${value}%`;
-    };
-
-    if (batteryInput) {
-        batteryInput.addEventListener("input", updateBatterySimulation);
-    }
-
-    // Canvas Snapshot Renderer
-    const downloadBtn = document.getElementById("trigger-download");
-    const captureArea = document.getElementById("capture-box");
-
-    if (downloadBtn && captureArea) {
-        downloadBtn.addEventListener("click", () => {
-            html2canvas(captureArea, {
-                backgroundColor: "#0b0e11",
-                scale: 2, // High DPI capture scaling optimization
-                logging: false,
-                useCORS: true
-            }).then(canvas => {
-                const downloadLink = document.createElement("a");
-                downloadLink.download = `Receipt-${Date.now()}.png`;
-                downloadLink.href = canvas.toDataURL("image/png");
-                downloadLink.click();
-            }).catch(err => {
-                console.error("Canvas transformation process encountered an exception:", err);
-            });
+    // Live sync fields logic
+    const syncText = (inputEl, displayEl) => {
+        inputEl.addEventListener("input", () => {
+            displayEl.textContent = inputEl.value;
         });
-    }
+    };
+
+    syncText(inputTime, displayTime);
+    syncText(inputAmount, displayAmount);
+    syncText(inputTraderId, displayTraderId);
+    syncText(inputUsername, displayUsername);
+    syncText(inputDatetime, displayDatetime);
+    syncText(inputOrderId, displayOrderId);
+    syncText(inputPaidWith, displayPaidWith);
+
+    // Battery system logic adjustment
+    const updateBatterySystem = () => {
+        let val = Number(inputBattery.value);
+        if (val > 100) val = 100;
+        if (val < 0) val = 0;
+        displayBatteryFill.style.width = `${val}%`;
+    };
+    inputBattery.addEventListener("input", updateBatterySystem);
+    updateBatterySystem(); // Init state
+
+    // High quality screenshot download function
+    const downloadBtn = document.querySelector(".download-btn");
+    downloadBtn.addEventListener("click", () => {
+        const targetBox = document.getElementById("box");
+        
+        html2canvas(targetBox, {
+            scale: 3, // Premium clarity enhancement
+            useCORS: true,
+            backgroundColor: "#181e25"
+        }).then(canvas => {
+            const link = document.createElement("a");
+            link.download = `Payment_Details_${Date.now()}.png`;
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        });
+    });
 });
